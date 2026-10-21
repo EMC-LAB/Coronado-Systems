@@ -5,7 +5,7 @@ Sitio web de Coronado Systems. Adquisición · Automatización · Ventas.
 ## Publicación
 La raíz del repositorio contiene `index.html` autocontenido (incluye CSS, JavaScript, logo e imágenes) y `experiencias-3d/banco-emc.html`, que reproduce el modelo técnico 3D original de EMC.
 
-El visor 3D utiliza bibliotecas web externas para cargar la escena; requiere conexión a internet. Puede desplegarse como sitio estático sin servidor de aplicaciones.
+El visor 3D reutiliza el renderizador WebGL nativo del modelo original de EMC. El sitio puede alojarse de forma estática; para verlo publicado necesitarás habilitar un servicio de hosting. Puede desplegarse como sitio estático sin servidor de aplicaciones.
 
 El sitio presenta sistemas en uso, prototipos y proyectos en desarrollo con sus respectivas etapas. No incluye videos; solo se incorporarán con autorización.
 
