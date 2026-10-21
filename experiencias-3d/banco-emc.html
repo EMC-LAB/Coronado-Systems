@@ -1,0 +1,265 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><title>Coronado Systems | Banco de calibración 3D EMC</title><style>*{box-sizing:border-box}html{font-family:Arial,sans-serif}body{margin:0;background:#f5f8f5}.emc-flowlab{padding-top:50px}/* EMC LAB · instrument-focused flow bench; scope to avoid altering existing website */
+.emc-flowlab{background:#f5f8f5;border-top:1px solid #dae5dc;border-bottom:1px solid #dae5dc;color:#1a3225;padding:96px 0 80px;font-family:'Barlow',Arial,sans-serif}
+.emc-flowlab *{box-sizing:border-box}.emc-flowlab-inner{width:min(1240px,calc(100% - 64px));margin:auto}.emc-flowlab-header{display:grid;grid-template-columns:1fr 330px;align-items:end;gap:55px;margin-bottom:30px}.emc-flow-eyebrow{font-size:11px;letter-spacing:.19em;color:#328757;font-weight:800;display:flex;align-items:center;gap:11px;margin-bottom:20px}.emc-flow-eyebrow i{display:block;height:2px;width:32px;background:#328757}.emc-flowlab-header h2{font-size:clamp(40px,4.5vw,68px);line-height:1.04;letter-spacing:-.045em;margin:0 0 18px;color:#183225;font-weight:800}.emc-flowlab-header h2 em{font-style:normal;color:#348658}.emc-flowlab-header p{max-width:650px;line-height:1.8;font-size:16px;color:#607267;margin:0}.emc-flow-disclaimer{border-left:2px solid #a2b9a6;padding:10px 0 10px 19px;color:#6c7f71;line-height:1.65;font-size:12px}.emc-flow-disclaimer b{display:block;letter-spacing:.14em;font-size:10px;color:#2b6545;margin-bottom:4px}.emc-flowlab-layout{display:grid;grid-template-columns:minmax(0,1.72fr) minmax(300px,.84fr);gap:17px;align-items:stretch}
+.emc-flowcanvas-shell{height:580px;min-width:0;position:relative;overflow:hidden;border:1px solid #c5d8c8;border-radius:20px;background:radial-gradient(ellipse at 43% 24%,#fafdfe,#e9f0ec 71%,#dce9e0);box-shadow:0 20px 55px rgba(28,67,41,.08);isolation:isolate}
+.emc-flowcanvas-shell:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 98%,rgba(53,91,68,.06) 99%),linear-gradient(transparent 98%,rgba(53,91,68,.06) 99%);background-size:36px 36px;mask-image:linear-gradient(to bottom,transparent 0%,#000 50%,#000 100%);pointer-events:none;opacity:.5}.emc-flowcanvas-shell canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab;position:absolute;inset:0}.emc-flowcanvas-shell canvas:active{cursor:grabbing}.emc-flowcanvas-top,.emc-flowcanvas-bottom{position:absolute;left:22px;right:22px;z-index:5;display:flex;justify-content:space-between;align-items:center;pointer-events:none}.emc-flowcanvas-top{top:20px;font-size:10px;font-weight:800;letter-spacing:.11em;color:#396047}.emc-flowcanvas-top small{font-size:10px;color:#558c69;letter-spacing:.07em}.emc-flow-status-dot{display:inline-block;width:7px;height:7px;border-radius:100%;background:#b7bfb8;margin-right:7px}.emc-flow-status-dot.live{background:#27b87a;box-shadow:0 0 0 5px rgba(36,173,112,.13)}.emc-flowcanvas-bottom{bottom:53px;color:#6b8071;font-size:11px}.emc-flowcanvas-bottom b{color:#3f9c67;font-size:20px;margin-right:5px}.emc-flowcanvas-bottom div{display:flex;gap:4px;pointer-events:auto}.emc-flowcanvas-bottom button{border:1px solid #c6d8ca;border-radius:7px;background:rgba(255,255,255,.86);width:34px;height:32px;font-size:19px;cursor:pointer;color:#37634a}.emc-flowcanvas-bottom button:hover{background:#e8f3e9}.emc-flow-legend{position:absolute;bottom:17px;left:22px;right:22px;display:flex;gap:20px;flex-wrap:wrap;z-index:5;font-size:10px;color:#577566}.emc-flow-legend span{display:flex;gap:7px;align-items:center}.emc-flow-legend i{height:8px;width:8px;border-radius:2px}.emc-flow-legend .color-water{background:#47c9d7}.emc-flow-legend .color-reference{background:#c8d3d3}.emc-flow-legend .color-uut{background:#2c78b3}
+.emc-flow-label{position:absolute;z-index:3;top:50%;left:50%;min-width:122px;max-width:190px;background:rgba(255,255,255,.94);border:1px solid rgba(76,120,92,.25);padding:8px 10px;border-radius:10px;box-shadow:0 5px 21px rgba(17,59,31,.10);transform:translate(-50%,-120%);pointer-events:none;transition:opacity .25s}.emc-flow-label:after{content:'';position:absolute;left:50%;top:100%;height:13px;border-left:1px solid #84aa8e}.emc-flow-label b{display:block;font-size:10px;letter-spacing:.055em;color:#254f37}.emc-flow-label small{display:block;margin-top:4px;font-size:10px;color:#718b78;line-height:1.2}.emc-flow-label.tag-master b{color:#546d74}.emc-flow-label.tag-badger b{color:#245e97}.emc-flow-fallback{position:absolute;z-index:8;top:38%;left:10%;right:10%;padding:20px;background:#fff;border-radius:12px;text-align:center}
+.emc-flow-panel{border:1px solid #d3e1d5;border-radius:20px;background:white;padding:26px 24px 22px;box-shadow:0 18px 45px rgba(24,57,35,.06);min-width:0}.emc-flow-panel-kicker{font-weight:800;letter-spacing:.14em;color:#4b8f64;font-size:9px;display:flex;justify-content:space-between;align-items:center}.emc-flow-panel-kicker span{background:#e6f6ea;border-radius:6px;padding:5px 8px;font-size:9px}.emc-flow-panel h3{font-size:29px;letter-spacing:-.035em;margin:12px 0 4px;color:#203729}.emc-flow-panel-sub{font-size:13px;line-height:1.45;color:#75877b;margin:0 0 20px}.emc-flow-mode{display:grid;grid-template-columns:1fr 1fr;border:1px solid #d7e7da;background:#f2f6f2;padding:4px;border-radius:10px;gap:4px;margin-bottom:22px}.emc-flow-mode button{font-family:inherit;font-weight:700;border:0;border-radius:7px;color:#647c6a;background:transparent;padding:10px;cursor:pointer}.emc-flow-mode button.is-active{background:#28734a;color:#fff;box-shadow:0 3px 8px rgba(21,89,44,.12)}.emc-flow-slider-label{display:flex;justify-content:space-between;gap:10px;align-items:center;color:#475e4d;font-weight:700;font-size:12px;margin-bottom:10px}.emc-flow-slider-label output{font-size:13px;color:#216c45}.emc-flow-range{width:100%;height:6px;accent-color:#288957;cursor:pointer;margin:4px 0 14px}.emc-flow-points{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:25px}.emc-flow-points button{border:1px solid #d9e5db;background:#f9fbf9;border-radius:8px;padding:9px 3px;font-size:10px;font-family:inherit;color:#5f7666;cursor:pointer}.emc-flow-points button.is-active{background:#e9f6ed;color:#257e4b;border-color:#4faa72;font-weight:700}.emc-flow-bias-range{margin-bottom:25px}.emc-flow-meter-readings{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.emc-flow-meter-readings>div{background:#eef5f1;padding:15px 13px;border-radius:11px;border:1px solid #d7e6dc}.emc-flow-meter-readings>div:nth-child(2){background:#edf3f8;border-color:#d6e3ed}.emc-flow-meter-readings span{display:block;font-size:9px;letter-spacing:.065em;font-weight:700;color:#588265;min-height:25px}.emc-flow-meter-readings>div:nth-child(2) span{color:#4b799a}.emc-flow-meter-readings strong{display:block;color:#1d6c45;font-size:27px;line-height:1.1;margin:4px 0}.emc-flow-meter-readings>div:nth-child(2) strong{color:#23648f}.emc-flow-meter-readings small{font-size:10px;color:#7e9182}.emc-flow-deviation{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid #e3eee5;padding:17px 0;margin-bottom:16px;font-size:12px;color:#63796a}.emc-flow-deviation strong{color:#256f4a;font-size:18px}.emc-flow-power{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:#196c46;color:white;font-weight:700;border:1px solid #196c46;padding:15px 10px;border-radius:11px;cursor:pointer;font-size:13px;transition:.2s;box-shadow:0 0 0 1px #b5e0c1,0 0 16px rgba(52,157,97,.2)}.emc-flow-power:hover{background:#145437;box-shadow:0 0 0 2px #96ddaa,0 0 24px rgba(46,168,97,.4)}.emc-flow-power.is-running{background:#345d45}.emc-flow-panel-note{font-size:10px;color:#839285;line-height:1.55;margin-top:13px}.emc-flow-panel-note b{color:#627a68}
+.emc-flow-steps{margin-top:22px;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #d5e6d9;border-radius:13px;overflow:hidden;background:#fff}.emc-flow-steps>div{padding:22px 22px;display:grid;gap:6px;border-right:1px solid #e1ece4}.emc-flow-steps>div:last-child{border:0}.emc-flow-steps small{color:#55a273;font-size:10px;font-weight:800}.emc-flow-steps b{font-size:15px;color:#2b4c36}.emc-flow-steps span{font-size:12px;line-height:1.55;color:#7b8c7c}
+@media(max-width:1100px){.emc-flowlab-layout{grid-template-columns:1fr}.emc-flowcanvas-shell{height:560px}.emc-flow-panel{display:block;max-width:none}.emc-flowlab-header{grid-template-columns:1fr}.emc-flow-disclaimer{max-width:600px}}
+@media(max-width:650px){.emc-flowlab{padding:65px 0}.emc-flowlab-inner{width:min(100% - 28px,500px)}.emc-flowlab-header{gap:17px}.emc-flowlab-header h2{font-size:42px}.emc-flowlab-header p{font-size:14px}.emc-flowcanvas-shell{height:420px;border-radius:14px}.emc-flowcanvas-top{top:13px;left:12px;right:12px;font-size:8px}.emc-flowcanvas-top small{font-size:8px}.emc-flowcanvas-bottom{bottom:51px;left:11px;right:11px}.emc-flowcanvas-bottom>span{font-size:9px;max-width:165px}.emc-flow-legend{left:12px;right:12px;gap:7px 12px;bottom:11px;font-size:8px}.emc-flow-label{min-width:74px;max-width:112px;padding:6px;border-radius:7px}.emc-flow-label b{font-size:8px}.emc-flow-label small{font-size:8px}.emc-flow-panel{padding:24px 18px}.emc-flow-steps{grid-template-columns:1fr 1fr}.emc-flow-steps>div:nth-child(2){border-right:0}.emc-flow-steps>div:nth-child(-n+2){border-bottom:1px solid #e1ece4}.emc-flow-steps>div{padding:15px 14px}.emc-flow-steps b{font-size:14px}.emc-flow-steps span{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.emc-flow-power{transition:none}}
+
+.emc-flow-schematic{display:none;position:absolute;width:100%;height:100%;inset:0;z-index:1;pointer-events:none}.emc-flow-schematic.is-fallback{display:block}.emc-schematic-flow{stroke-dashoffset:0}.emc-flow-schematic.is-running .emc-schematic-flow{animation:emc-water-move .8s linear infinite}@keyframes emc-water-move{to{stroke-dashoffset:-41}}@media(max-width:650px){.emc-flow-schematic.is-fallback{transform:scale(1.25);transform-origin:center center}}
+
+body.emc-lab-visible .chatbot,body.emc-lab-visible .wa-float-wide {opacity:0;pointer-events:none;transition:opacity .23s ease}
+
+/* Vista pública: solamente el banco 3D, sin controles ni lecturas simuladas */
+.emc-flow-panel{display:none!important}
+.emc-flowlab-layout{grid-template-columns:minmax(0,1fr)!important}
+.emc-flowcanvas-shell{height:660px}
+.emc-flowlab{padding:62px 0}
+@media(max-width:650px){.emc-flowcanvas-shell{height:430px}.emc-flowlab{padding:50px 0}}
+</style><style id="coronado-3d-visual-only">
+html,body{margin:0!important;min-height:100%;overflow:hidden;background:#eef5f0}
+.emc-flowlab{padding:0!important;border:0!important;min-height:100vh!important}
+.emc-flowlab-inner{width:100%!important;max-width:none!important;margin:0!important}
+.emc-flowlab-header,.emc-flow-panel,.emc-flow-steps,.emc-flow-legend,.emc-flowcanvas-top,.emc-flowcanvas-bottom,.emc-flow-label,.emc-flow-disclaimer{display:none!important}
+.emc-flowlab-layout{display:block!important;margin:0!important;padding:0!important}
+.emc-flowcanvas-shell{height:100vh!important;width:100%!important;min-height:340px!important;border:0!important;border-radius:0!important;box-shadow:none!important;margin:0!important}
+.emc-flowcanvas-shell canvas{width:100%!important;height:100%!important}
+</style></head><body><section aria-labelledby="emc-flow-title" class="emc-flowlab" id="calibracion-interactiva">
+<div class="emc-flowlab-inner">
+<div class="emc-flowlab-header">
+<div><div class="emc-flow-eyebrow"><i></i> LABORATORIO INTERACTIVO / EMC</div><h2 id="emc-flow-title">Así se comprueba <em>el flujo.</em></h2><p>Conoce visualmente el recorrido del agua por nuestro banco de calibración. Gira y acerca el montaje para identificar el depósito, la bomba, el patrón de referencia y el medidor electromagnético bajo prueba.</p></div>
+<div class="emc-flow-disclaimer"><b>MODELO VISUAL INTERACTIVO</b><span>Representación educativa del montaje. No muestra mediciones reales ni sustituye una calibración.</span></div>
+</div>
+<div class="emc-flowlab-layout">
+<div class="emc-flowcanvas-shell" id="emc-flow-shell">
+<div class="emc-flowcanvas-top"><span><span class="emc-flow-status-dot"></span> BANCO DE CALIBRACIÓN · DN80</span><small id="emc-flow-status">CIRCULACIÓN ILUSTRATIVA</small></div>
+<canvas aria-label="Modelo tridimensional interactivo de sistema de calibración de caudal. Incluye tinaco, bomba, patrón de referencia y medidor electromagnético" id="emc-flow-canvas" role="img"></canvas><svg aria-label="Representación industrial del circuito de calibración: tinaco, bomba, patrón de referencia, medidor Badger Meter, tubería de retorno y lectura comparativa" class="emc-flow-schematic" id="emc-flow-schematic" role="img" viewbox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="pipeM" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fbffff"></stop><stop offset=".18" stop-color="#b8c9cf"></stop><stop offset=".40" stop-color="#566e77"></stop><stop offset=".55" stop-color="#c8d9dc"></stop><stop offset=".76" stop-color="#7d959b"></stop><stop offset="1" stop-color="#d9e7e5"></stop></lineargradient>
+<lineargradient id="tinacoG"><stop stop-color="#a3b8c1"></stop><stop offset=".20" stop-color="#e6f4f1"></stop><stop offset=".51" stop-color="#92abb7"></stop><stop offset=".84" stop-color="#496c75"></stop><stop offset="1" stop-color="#c8dfe0"></stop></lineargradient>
+<lineargradient id="referenceG"><stop stop-color="#5e737c"></stop><stop offset=".13" stop-color="#ecf7f5"></stop><stop offset=".32" stop-color="#97aeb8"></stop><stop offset=".60" stop-color="#e0ebed"></stop><stop offset=".86" stop-color="#6f8992"></stop><stop offset="1" stop-color="#e3f0ee"></stop></lineargradient>
+<lineargradient id="badgeG"><stop stop-color="#174b7c"></stop><stop offset=".22" stop-color="#488ac1"></stop><stop offset=".48" stop-color="#215f96"></stop><stop offset=".73" stop-color="#4085bd"></stop><stop offset="1" stop-color="#0f3962"></stop></lineargradient>
+<lineargradient id="glassG" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#cefafe"></stop><stop offset=".55" stop-color="#52b1c1"></stop><stop offset="1" stop-color="#327380"></stop></lineargradient>
+<radialgradient id="pumpG"><stop stop-color="#568b86"></stop><stop offset=".6" stop-color="#235e60"></stop><stop offset="1" stop-color="#143e47"></stop></radialgradient>
+<lineargradient id="groundG" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#b8ccc1" stop-opacity=".36"></stop><stop offset="1" stop-color="#d8e8d9" stop-opacity=".05"></stop></lineargradient>
+<filter height="220%" id="softShadow" width="160%" x="-30%" y="-50%"><fegaussianblur stddeviation="13"></fegaussianblur></filter>
+<filter height="170%" id="layerShadow" width="150%" x="-25%" y="-30%"><fedropshadow dx="0" dy="10" flood-color="#183c30" flood-opacity=".18" stddeviation="9"></fedropshadow></filter>
+<filter id="tinyShadow"><fedropshadow dx="0" dy="3" flood-opacity=".28" stddeviation="2"></fedropshadow></filter>
+<pattern height="34" id="floorGrid" patternunits="userSpaceOnUse" width="34"><path d="M34 0H0V34" fill="none" stroke="#97b7a6" stroke-opacity=".3"></path></pattern>
+</defs>
+<!-- low-contrast technical floor & stage -->
+<path d="M35 416 L947 416 L997 527 L0 527Z" fill="url(#floorGrid)" opacity=".75"></path><ellipse cx="509" cy="436" fill="#547866" filter="url(#softShadow)" opacity=".15" rx="430" ry="38"></ellipse>
+<rect fill="#324e50" height="38" rx="8" width="715" x="182" y="385"></rect><rect fill="#668284" height="9" rx="4" width="715" x="182" y="385"></rect>
+<g fill="#496367"><rect height="24" rx="3" width="24" x="230" y="419"></rect><rect height="24" rx="3" width="24" x="850" y="419"></rect><rect height="24" rx="3" width="24" x="515" y="419"></rect></g>
+<!-- flow return behind tank -->
+<path d="M841 315 H898 V129 Q898 115 884 115 H179" fill="none" stroke="#637f82" stroke-linecap="round" stroke-linejoin="round" stroke-width="28"></path>
+<path d="M841 315 H898 V129 Q898 115 884 115 H179" fill="none" stroke="url(#pipeM)" stroke-linecap="round" stroke-linejoin="round" stroke-width="22"></path>
+<path class="emc-schematic-flow" d="M841 315 H898 V129 Q898 115 884 115 H179" fill="none" stroke="#36becb" stroke-dasharray="8 24" stroke-linecap="round" stroke-opacity=".65" stroke-width="3"></path>
+<!-- reservoir 1500L -->
+<g filter="url(#layerShadow)"><rect fill="url(#tinacoG)" height="246" rx="18" width="168" x="54" y="136"></rect><ellipse cx="138" cy="137" fill="#ecf5f2" rx="84" ry="23" stroke="#7d989e" stroke-width="8"></ellipse><ellipse cx="138" cy="374" fill="#7797a0" rx="84" ry="22" stroke="#bcd5d0" stroke-width="4"></ellipse><rect fill="#456879" height="123" rx="11" width="110" x="83" y="189"></rect><rect fill="url(#glassG)" height="107" rx="7" width="94" x="91" y="199"></rect><rect fill="#1da9c8" height="72" opacity=".55" width="92" x="92" y="233"></rect><path d="M94 233 Q125 219 156 230 T185 232" fill="none" stroke="#d0fbff" stroke-width="3"></path><path d="M98 210v88" opacity=".45" stroke="#d9f9ff" stroke-width="7"></path></g>
+<g fill="#315565" font-family="Arial, sans-serif" text-anchor="middle"><text font-size="12" font-weight="bold" letter-spacing="2" x="139" y="160">DEPÓSITO</text><text font-size="15" font-weight="bold" x="137" y="335">1500 L</text><text font-size="10" letter-spacing="1.5" x="137" y="355">AGUA DE ENSAYO</text></g>
+<!-- intake feeder and pipe body -->
+<path d="M218 331 H850" fill="none" stroke="#425b66" stroke-linecap="round" stroke-width="34"></path>
+<path d="M218 331 H850" fill="none" stroke="url(#pipeM)" stroke-linecap="round" stroke-width="29"></path>
+<path d="M218 321 H850" fill="none" stroke="#fafefe" stroke-linecap="round" stroke-opacity=".43" stroke-width="5"></path>
+<path class="emc-schematic-flow" d="M218 332 H850" fill="none" stroke="#1dd2e2" stroke-dasharray="13 27" stroke-opacity=".8" stroke-width="4"></path>
+<!-- tank outlet curved down to circuit -->
+<path d="M160 375V406H240V332" fill="none" stroke="#647d84" stroke-linecap="round" stroke-linejoin="round" stroke-width="25"></path>
+<path d="M160 375V406H240V332" fill="none" stroke="url(#pipeM)" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"></path>
+<!-- centrifugal pump -->
+<g filter="url(#layerShadow)"><rect fill="#253e43" height="25" rx="5" width="113" x="208" y="361"></rect><rect fill="url(#pumpG)" height="70" rx="27" stroke="#24484c" stroke-width="7" width="87" x="193" y="293"></rect><ellipse cx="236" cy="329" fill="#2d6970" rx="30" ry="29" stroke="#99b6b6" stroke-width="5"></ellipse><ellipse cx="236" cy="329" fill="#93bac2" rx="14" ry="13" stroke="#1b4549" stroke-width="4"></ellipse><rect fill="#3f666c" height="63" rx="11" stroke="#25484d" stroke-width="5" width="74" x="266" y="298"></rect>
+<g stroke="#77999c" stroke-width="4"><line x1="281" x2="281" y1="304" y2="353"></line><line x1="295" x2="295" y1="304" y2="353"></line><line x1="310" x2="310" y1="304" y2="353"></line><line x1="323" x2="323" y1="306" y2="354"></line></g></g>
+<!-- master reference flanges -->
+<g filter="url(#layerShadow)"><rect fill="url(#referenceG)" height="95" rx="43" stroke="#6b8288" stroke-width="7" width="160" x="382" y="284"></rect><rect fill="url(#referenceG)" height="93" rx="29" stroke="#d4e4e5" stroke-width="5" width="120" x="401" y="283"></rect><rect fill="#526d75" height="106" rx="5" stroke="#b9c8cb" stroke-width="3" width="17" x="375" y="277"></rect><rect fill="#506b73" height="106" rx="5" stroke="#c5d7d7" stroke-width="3" width="18" x="530" y="277"></rect>
+<g fill="#374e55" stroke="#d5dfda" stroke-width="1.7"><circle cx="384" cy="293" r="6"></circle><circle cx="384" cy="369" r="6"></circle><circle cx="538" cy="293" r="6"></circle><circle cx="538" cy="369" r="6"></circle></g>
+<rect fill="#617780" height="39" width="25" x="451" y="252"></rect><rect fill="#2e444d" height="66" rx="8" stroke="#b3c9c5" stroke-width="6" width="87" x="419" y="193"></rect><rect fill="#173c41" height="35" rx="3" width="69" x="428" y="205"></rect><path d="M432 218H491" stroke="#54cfb1" stroke-width="2"></path><circle cx="441" cy="249" fill="#56db96" r="4"></circle><circle cx="462" cy="249" fill="#c3c6c0" r="4"></circle></g>
+<g font-family="Arial,sans-serif" text-anchor="middle"><text fill="#74ebca" font-size="9" font-weight="bold" x="462" y="222">MASTER</text><text fill="#254b50" font-size="12" font-weight="bold" letter-spacing="1" x="462" y="352">PATRÓN</text></g>
+<!-- Badger Meter reference UUT geometry -->
+<g filter="url(#layerShadow)"><rect fill="url(#badgeG)" height="102" rx="28" stroke="#154977" stroke-width="7" width="151" x="617" y="279"></rect><rect fill="url(#badgeG)" height="80" rx="21" stroke="#7bb9d3" stroke-width="3" width="109" x="638" y="289"></rect><rect fill="#133e66" height="110" rx="5" stroke="#a2ccd5" stroke-width="4" width="23" x="609" y="275"></rect><rect fill="#153f68" height="110" rx="5" stroke="#b0d4dc" stroke-width="4" width="23" x="760" y="275"></rect>
+<g fill="#d6e8eb" stroke="#295775" stroke-width="2"><circle cx="621" cy="289" r="6"></circle><circle cx="621" cy="371" r="6"></circle><circle cx="770" cy="289" r="6"></circle><circle cx="770" cy="371" r="6"></circle></g><rect fill="#164776" height="33" rx="5" width="29" x="681" y="252"></rect><rect fill="#164a7e" height="86" rx="8" stroke="#8fc3d6" stroke-width="5" width="103" x="645" y="174"></rect><rect fill="#0b2c42" height="40" rx="3" stroke="#528eaa" stroke-width="3" width="81" x="656" y="190"></rect><rect fill="#96bdd0" height="7" rx="2" width="18" x="662" y="237"></rect><rect fill="#96bdd0" height="7" rx="2" width="18" x="684" y="237"></rect><rect fill="#96bdd0" height="7" rx="2" width="18" x="707" y="237"></rect></g>
+<g font-family="Arial,sans-serif" font-weight="bold" text-anchor="middle"><text fill="#eaf7ff" font-size="10" letter-spacing=".5" x="696" y="186">BADGER METER</text><text fill="#7bd5de" font-size="13" id="emc-svg-uut-value" x="696" y="217">120.7</text><text fill="#eff9ff" font-size="12" x="692" y="346">MAGNETIC</text></g>
+<!-- outlet throttling valve and return -->
+<g><rect fill="url(#pipeM)" height="111" rx="5" stroke="#5c7482" stroke-width="5" width="31" x="819" y="275"></rect><rect fill="#425867" height="59" width="7" x="832" y="226"></rect><ellipse cx="835" cy="226" fill="none" rx="34" ry="12" stroke="#d27b42" stroke-width="7"></ellipse><path d="M806 226H865" stroke="#bd6636" stroke-width="6"></path><circle cx="835" cy="226" fill="#c96a38" r="7"></circle></g>
+<!-- instrument support rail -->
+<g stroke="#9cb1b0" stroke-width="6"><path d="M430 383V399"></path><path d="M704 384V400"></path></g>
+<!-- labeling and traces -->
+<g font-family="Arial,sans-serif" text-anchor="middle"><text fill="#2e6554" font-size="13" font-weight="bold" x="138" y="99">01 / TINACO</text><text fill="#416c60" font-size="13" font-weight="bold" x="267" y="455">02 / BOMBA</text><text fill="#40686e" font-size="13" font-weight="bold" x="462" y="155">03 / PATRÓN MAESTRO</text><text fill="#275c8f" font-size="13" font-weight="bold" x="699" y="142">04 / BAJO CALIBRACIÓN</text><text fill="#4f8774" font-size="12" font-weight="bold" x="865" y="95">RETORNO</text></g>
+<g fill="none" opacity=".8" stroke="#739e8e" stroke-dasharray="3 4" stroke-width="1.3"><path d="M136 109V132"></path><path d="M260 444V387"></path><path d="M462 161V187"></path><path d="M699 147V170"></path><path d="M865 103V117"></path></g>
+</svg>
+<div class="emc-flow-label tag-tank" id="emc-tag-tank"><b>01 · DEPÓSITO</b><small>Agua de ensayo</small></div>
+<div class="emc-flow-label tag-pump" id="emc-tag-pump"><b>02 · BOMBA</b><small>Alimentación</small></div>
+<div class="emc-flow-label tag-master" id="emc-tag-master"><b>03 · PATRÓN</b><small>Referencia trazable*</small></div>
+<div class="emc-flow-label tag-badger" id="emc-tag-badger"><b>04 · BADGER METER</b><small>Electromagnético bajo prueba</small></div>
+<div class="emc-flowcanvas-bottom"><span><b>↻</b> Arrastra para girar · usa la rueda para acercar</span><div><button aria-label="Alejar modelo" id="emc-zoom-out" type="button">−</button><button aria-label="Restablecer vista" id="emc-reset-view" type="button">⟲</button><button aria-label="Acercar modelo" id="emc-zoom-in" type="button">+</button></div></div>
+<div class="emc-flow-legend"><span><i class="color-water"></i> Recorrido del agua</span><span><i class="color-reference"></i> Patrón maestro</span><span><i class="color-uut"></i> Medidor bajo prueba</span></div>
+<div class="emc-flow-fallback" hidden="" id="emc-flow-fallback">La visualización 3D requiere un navegador compatible con WebGL. Los controles de comparación siguen disponibles.</div>
+</div>
+<aside class="emc-flow-panel" aria-hidden="true" inert hidden>
+<div class="emc-flow-panel-kicker">SIMULADOR DE COMPARACIÓN <span>DEMO</span></div>
+<h3>Prueba de caudal</h3>
+<p class="emc-flow-panel-sub">Agua circulando por dos medidores conectados en serie.</p>
+<div aria-label="Tipo de alimentación" class="emc-flow-mode" role="group"><button aria-pressed="true" class="is-active" data-flow-mode="pump" type="button">Bomba</button><button aria-pressed="false" data-flow-mode="gravity" type="button">Gravedad</button></div>
+<label class="emc-flow-slider-label" for="emc-flow-rate">Caudal nominal <output id="emc-flow-rate-out">120 L/min</output></label>
+<input class="emc-flow-range" id="emc-flow-rate" max="240" min="40" step="5" type="range" value="120"/>
+<div aria-label="Puntos de prueba" class="emc-flow-points" role="group"><button data-flow-point="60" type="button">P1 · 60</button><button class="is-active" data-flow-point="120" type="button">P2 · 120</button><button data-flow-point="180" type="button">P3 · 180</button></div>
+<label class="emc-flow-slider-label" for="emc-flow-bias">Desviación simulada <output id="emc-flow-bias-out">+0.6 %</output></label>
+<input class="emc-flow-range emc-flow-bias-range" id="emc-flow-bias" max="1.5" min="-1.5" step="0.1" type="range" value="0.6"/>
+<div class="emc-flow-meter-readings"><div><span>LECTURA DEL PATRÓN</span><strong id="emc-flow-master-value">120.0</strong><small>L/min · referencia</small></div><div><span>BADGER ELECTROMAGNÉTICO</span><strong id="emc-flow-badger-value">120.7</strong><small>L/min · bajo prueba</small></div></div>
+<div class="emc-flow-deviation"><span>Diferencia relativa ilustrativa</span><strong id="emc-flow-deviation-value">+0.60 %</strong></div>
+<button aria-pressed="false" class="emc-flow-power" id="emc-flow-power" type="button"><span id="emc-flow-power-icon">▶</span><span id="emc-flow-power-label">Iniciar circulación</span></button>
+<div class="emc-flow-panel-note"><b>* Trazabilidad:</b> la demostración representa una comparación con un patrón previamente calibrado. No muestra su certificado ni sus resultados metrológicos reales.</div>
+</aside>
+</div>
+<div aria-label="Etapas de calibración" class="emc-flow-steps"><div><small>01</small><b>Preparar</b><span>Montaje, purga y verificación de tubería llena.</span></div><div><small>02</small><b>Estabilizar</b><span>Control de flujo mediante bomba o carga hidráulica.</span></div><div><small>03</small><b>Comparar</b><span>Lecturas del patrón y del instrumento.</span></div><div><small>04</small><b>Documentar</b><span>Resultados reales e incertidumbre en su certificado.</span></div></div>
+</div></section><script>/* EMC flow bench · genuine WebGL 3D procedural scene, zero external dependencies.
+   This is an educational animation, not an instrument reading/calibration software. */
+(() => {
+  const canvas=document.getElementById('emc-flow-canvas');
+  if(!canvas) return;
+  const shell=document.getElementById('emc-flow-shell');
+  if(window.IntersectionObserver){const lab=document.querySelector('.emc-flowlab');if(lab){new IntersectionObserver((entries)=>{document.body.classList.toggle('emc-lab-visible',entries.some(e=>e.isIntersecting&&e.intersectionRatio>.34));},{threshold:[0,.34,.7]}).observe(lab)}}
+  const gl=canvas.getContext('webgl',{antialias:true,alpha:true,preserveDrawingBuffer:true})||canvas.getContext('experimental-webgl');
+  const fallback=document.getElementById('emc-flow-fallback');
+  if(!gl){ const sv=document.getElementById('emc-flow-schematic'); if(sv)sv.classList.add('is-fallback'); canvas.style.display='none'; document.querySelectorAll('.emc-flow-label').forEach(e=>e.style.display='none'); const note=document.querySelector('.emc-flowcanvas-bottom > span'); if(note)note.textContent='Vista técnica ilustrativa · secuencia de flujo animada'; setupSchematicControls(); return; }
+  function setupSchematicControls(){
+    const by=id=>document.getElementById(id),rate=by('emc-flow-rate'),bias=by('emc-flow-bias'),svg=by('emc-flow-schematic');let running=true,feed='pump';let schematicZoom=1;const scale=()=>{if(svg)svg.style.transform='scale('+((window.innerWidth<650?1.25:1)*schematicZoom).toFixed(2)+')';};by('emc-zoom-in')?.addEventListener('click',()=>{schematicZoom=Math.min(1.5,schematicZoom+.12);scale()});by('emc-zoom-out')?.addEventListener('click',()=>{schematicZoom=Math.max(.83,schematicZoom-.12);scale()});by('emc-reset-view')?.addEventListener('click',()=>{schematicZoom=1;scale()});scale();
+    const sync=()=>{const q=running?(feed==='gravity'?Math.min(90,Number(rate.value)):Number(rate.value)):0;const deviation=Number(bias.value);by('emc-flow-rate-out').textContent=rate.value+' L/min';by('emc-flow-bias-out').textContent=(deviation>=0?'+':'')+deviation.toFixed(1)+' %';by('emc-flow-master-value').textContent=q.toFixed(1);by('emc-flow-badger-value').textContent=(q*(1+deviation/100)).toFixed(1);by('emc-flow-deviation-value').textContent=(deviation>=0?'+':'')+(q?deviation:0).toFixed(2)+' %';by('emc-flow-status').textContent=running?'AGUA EN CIRCULACIÓN':'SISTEMA EN REPOSO';document.querySelector('.emc-flow-status-dot')?.classList.toggle('live',running);svg?.classList.toggle('is-running',running);by('emc-flow-power-label').textContent=running?'Detener circulación':'Iniciar circulación';by('emc-flow-power-icon').textContent=running?'■':'▶';by('emc-svg-uut-value').textContent=(q*(1+deviation/100)).toFixed(1);document.querySelectorAll('[data-flow-point]').forEach(b=>b.classList.toggle('is-active',Number(b.dataset.flowPoint)===Number(rate.value)));};
+    rate?.addEventListener('input',sync);bias?.addEventListener('input',sync);by('emc-flow-power')?.addEventListener('click',()=>{running=!running;sync()});document.querySelectorAll('[data-flow-point]').forEach(b=>b.addEventListener('click',()=>{rate.value=b.dataset.flowPoint;sync()}));document.querySelectorAll('[data-flow-mode]').forEach(b=>b.addEventListener('click',()=>{feed=b.dataset.flowMode;document.querySelectorAll('[data-flow-mode]').forEach(c=>{c.classList.toggle('is-active',c===b);c.setAttribute('aria-pressed',String(c===b))});sync()}));sync();
+  }
+  const V=(x=0,y=0,z=0)=>[x,y,z],add=(a,b)=>[a[0]+b[0],a[1]+b[1],a[2]+b[2]],sub=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]],mul=(v,s)=>[v[0]*s,v[1]*s,v[2]*s],dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2],cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],norm=v=>{const d=Math.hypot(...v)||1;return mul(v,1/d)};
+  function buildShader(type,code){const s=gl.createShader(type);gl.shaderSource(s,code);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s}
+  const vertexSource='attribute vec3 aPosition;attribute vec3 aNormal;attribute vec3 aColor;attribute float aShine;uniform mat4 uMatrix;varying vec3 n;varying vec3 col;varying vec3 point;varying float shine;void main(){n=aNormal;col=aColor;point=aPosition;shine=aShine;gl_Position=uMatrix*vec4(aPosition,1.0);}';
+  const fragSource='precision mediump float;varying vec3 n;varying vec3 col;varying vec3 point;varying float shine;uniform vec3 uCamera;void main(){vec3 normal=normalize(n);vec3 light=normalize(vec3(-.38,.88,1.0));float diffuse=max(dot(normal,light),0.0);float bounce=max(dot(normal,normalize(vec3(.4,.3,-.7))),0.0);vec3 viewDir=normalize(uCamera-point);vec3 halfV=normalize(light+viewDir);float spec=pow(max(dot(normal,halfV),0.0),30.0)*shine;vec3 shaded=col*(.39+.55*diffuse+.10*bounce)+vec3(1.0,.98,.94)*spec*.64;gl_FragColor=vec4(shaded,1.0);}';
+  let shader;
+  try{shader=gl.createProgram();gl.attachShader(shader,buildShader(gl.VERTEX_SHADER,vertexSource));gl.attachShader(shader,buildShader(gl.FRAGMENT_SHADER,fragSource));gl.linkProgram(shader);if(!gl.getProgramParameter(shader,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(shader));}catch(error){console.warn('EMC 3D renderer: ',error);document.getElementById('emc-flow-schematic')?.classList.add('is-fallback');canvas.style.display='none';document.querySelectorAll('.emc-flow-label').forEach(e=>e.style.display='none');setupSchematicControls();return}
+  gl.useProgram(shader);
+  const loc={position:gl.getAttribLocation(shader,'aPosition'),normal:gl.getAttribLocation(shader,'aNormal'),color:gl.getAttribLocation(shader,'aColor'),shine:gl.getAttribLocation(shader,'aShine'),matrix:gl.getUniformLocation(shader,'uMatrix'),camera:gl.getUniformLocation(shader,'uCamera')};
+  const RGB={steel:[.61,.71,.72],lightSteel:[.86,.91,.89],darkSteel:[.29,.39,.41],stainless:[.77,.83,.84],tank:[.68,.78,.81],tankBlue:[.35,.62,.71],water:[.17,.83,.88],pump:[.20,.43,.48],pumpDark:[.16,.31,.33],blue:[.12,.43,.70],blueLight:[.34,.65,.80],blueDark:[.09,.25,.45],black:[.10,.17,.20],screen:[.09,.20,.22],screenGlow:[.33,.87,.61],green:[.14,.54,.38],orange:[.92,.42,.12],floor:[.87,.92,.89],floorLine:[.76,.86,.80],base:[.24,.34,.34],shadow:[.78,.84,.80]};
+  class Mesh { constructor(){this.arr=[]}v(p,n,c,shin=.2){this.arr.push(...p,...n,...c,shin)}t(a,b,c,col,shine=.25){let no=norm(cross(sub(b,a),sub(c,a)));this.v(a,no,col,shine);this.v(b,no,col,shine);this.v(c,no,col,shine)}quad(a,b,c,d,col,shine=.25){this.t(a,b,c,col,shine);this.t(a,c,d,col,shine)}box(cx,cy,cz,w,h,d,col,shine=.2){const x=cx,y=cy,z=cz,A=[x-w/2,y-h/2,z-d/2],B=[x+w/2,y-h/2,z-d/2],C=[x+w/2,y+h/2,z-d/2],D=[x-w/2,y+h/2,z-d/2],E=[x-w/2,y-h/2,z+d/2],F=[x+w/2,y-h/2,z+d/2],G=[x+w/2,y+h/2,z+d/2],H=[x-w/2,y+h/2,z+d/2];[[B,A,D,C],[E,F,G,H],[A,E,H,D],[F,B,C,G],[D,H,G,C],[A,B,F,E]].forEach(q=>this.quad(...q,col,shine))}
+    cylinder(a,b,r,col,N=20,shine=.8,r2=r){const dir=norm(sub(b,a));let helper=Math.abs(dir[1])>.91?V(0,0,1):V(0,1,0);const u=norm(cross(dir,helper)),v=norm(cross(dir,u));for(let i=0;i<N;i++){const t=i*2*Math.PI/N,s=(i+1)*2*Math.PI/N;const n0=add(mul(u,Math.cos(t)),mul(v,Math.sin(t))),n1=add(mul(u,Math.cos(s)),mul(v,Math.sin(s)));const a0=add(a,mul(n0,r)),a1=add(a,mul(n1,r)),b0=add(b,mul(n0,r2)),b1=add(b,mul(n1,r2));this.v(a0,n0,col,shine);this.v(b0,n0,col,shine);this.v(b1,n1,col,shine);this.v(a0,n0,col,shine);this.v(b1,n1,col,shine);this.v(a1,n1,col,shine);this.v(a,mul(dir,-1),col,shine);this.v(a1,mul(dir,-1),col,shine);this.v(a0,mul(dir,-1),col,shine);this.v(b,dir,col,shine);this.v(b0,dir,col,shine);this.v(b1,dir,col,shine)}}
+    sphere(c,r,col,stacks=10,slices=16,shine=.5){for(let i=0;i<stacks;i++){const p0=-Math.PI/2+i*Math.PI/stacks,p1=-Math.PI/2+(i+1)*Math.PI/stacks;for(let j=0;j<slices;j++){const t0=j*2*Math.PI/slices,t1=(j+1)*2*Math.PI/slices;const p=(p,t)=>[Math.cos(p)*Math.cos(t),Math.sin(p),Math.cos(p)*Math.sin(t)];const aa=p(p0,t0),bb=p(p0,t1),cc=p(p1,t1),dd=p(p1,t0);[[aa,bb,cc],[aa,cc,dd]].forEach(tr=>tr.forEach(n=>this.v(add(c,mul(n,r)),n,col,shine)))}}}
+    torus(c,R,r,axis,col,N=25,M=10,shine=.6){const xyz=(u,v)=>{const cs=Math.cos(u),sn=Math.sin(u),cv=Math.cos(v),sv=Math.sin(v);if(axis==='x')return [sv*r,(R+r*cv)*cs,(R+r*cv)*sn];if(axis==='y')return [(R+r*cv)*cs,sv*r,(R+r*cv)*sn];return [(R+r*cv)*cs,(R+r*cv)*sn,sv*r]};const nn=(u,v)=>{const cs=Math.cos(u),sn=Math.sin(u),cv=Math.cos(v),sv=Math.sin(v);return axis==='x'?V(sv,cv*cs,cv*sn):axis==='y'?V(cv*cs,sv,cv*sn):V(cv*cs,cv*sn,sv)};for(let i=0;i<N;i++){const u=i*2*Math.PI/N,u1=(i+1)*2*Math.PI/N;for(let j=0;j<M;j++){const v=j*2*Math.PI/M,v1=(j+1)*2*Math.PI/M;const arr=[[u,v],[u1,v],[u1,v1],[u,v1]];for(let k of [[0,1,2],[0,2,3]])k.forEach(idx=>{const [a,b]=arr[idx];this.v(add(c,xyz(a,b)),nn(a,b),col,shine)})}}}
+    path(points,r,col,shine=.7){for(let i=1;i<points.length;i++){this.cylinder(points[i-1],points[i],r,col,15,shine);if(i<points.length-1)this.sphere(points[i],r,col,7,12,shine)}}
+  }
+  let staticMesh=new Mesh(),animatedMesh=new Mesh();let run=true,feed='pump',valve=120,bias=.6;let yaw=-.48, pitch=.29,zoom=16.5,drag=false,moved=false,pointerX=0,pointerY=0;const target=V(-.15,1.13,-.26);
+  const inputRate=document.getElementById('emc-flow-rate'),inputBias=document.getElementById('emc-flow-bias');
+  const el=(id)=>document.getElementById(id);
+  function drawScene(){const m=staticMesh;
+    // workshop plinth & floor
+    m.box(0,-.15,-.65,12.2,.20,6.5,RGB.floor,.04);
+    for(let x=-6;x<=6;x+=.6)m.box(x,-.037,-.65,.012,.007,6.2,RGB.floorLine,.02);
+    for(let z=-3.65;z<=2.35;z+=.6)m.box(0,-.037,z,12.1,.006,.012,RGB.floorLine,.02);
+    m.box(0,.025,.05,9.8,.12,1.45,RGB.base,.6);m.box(0,.10,.05,9.65,.07,1.31,RGB.darkSteel,.4);
+    for(let x of [-4.35,-1.2,1.4,4.35]){m.box(x,-.06,.65,.23,.33,.21,RGB.darkSteel);m.box(x,-.06,-.6,.23,.33,.21,RGB.darkSteel)}
+    // storage tank behind line
+    const tank=V(-4.35,1.44,-2.32);m.cylinder(V(-4.35,.16,-2.32),V(-4.35,2.95,-2.32),.94,RGB.tank,40,.7);
+    m.torus(V(-4.35,.25,-2.32),.94,.09,'y',RGB.lightSteel,44,12,.9);m.torus(V(-4.35,2.86,-2.32),.94,.09,'y',RGB.stainless,44,12,.9);
+    m.cylinder(V(-4.35,2.95,-2.32),V(-4.35,3.08,-2.32),.93,RGB.lightSteel,36,.7);m.cylinder(V(-4.35,3.08,-2.32),V(-4.35,3.24,-2.32),.25,RGB.darkSteel,20,.8);m.torus(V(-4.35,1.45,-2.32),.95,.035,'y',RGB.darkSteel,40,12,.3);
+    // translucent look using window bands (opaque enamel)
+    m.box(-4.33,1.50,-1.365,.74,1.40,.04,RGB.tankBlue,.6);m.box(-4.33,1.00,-1.322,.67,.39,.04,RGB.water,.5);m.box(-4.33,2.30,-1.322,.65,.05,.05,RGB.darkSteel,.2);
+    for(let y of [.55,.98,1.41,1.84,2.27])m.box(-3.92,y,-1.30,.06,.025,.03,RGB.lightSteel,.6);
+    m.box(-4.35,.05,-2.32,2.2,.15,2.2,RGB.base,.4);
+    // tank inlet/discharge loop incl elbows. physically illustrative, sealed loop.
+    m.path([V(-3.63,.43,-2.35),V(-3.37,.43,-2.35),V(-3.37,.43,-1.35),V(-3.37,.68,-.42),V(-3.37,1.02,-.42)],.16,RGB.steel);
+    m.path([V(4.08,1.05,0),V(4.65,1.05,0),V(4.75,1.14,-.17),V(4.75,1.90,-.85),V(4.75,2.38,-1.78),V(4.24,2.43,-2.35),V(-3.12,2.43,-2.35),V(-3.30,2.50,-2.35)],.12,RGB.steel);
+    m.cylinder(V(-3.3,2.49,-2.35),V(-3.3,2.81,-2.35),.12,RGB.steel);
+    // main pipe with supports, diameter nominal DN80
+    m.path([V(-3.75,1.04,0),V(4.20,1.04,0)],.165,RGB.steel,.95);
+    for(let x of [-2.62,.45,2.92]){m.box(x,.50,0,.14,.87,.32,RGB.darkSteel,.4);m.box(x,.19,0,.65,.15,.52,RGB.base,.5);m.torus(V(x,1.04,0),.18,.045,'x',RGB.darkSteel,20,10,.8)}
+    // Pump body and motor - cast iron centrifugal pump at pipe inlet
+    m.cylinder(V(-3.86,.76,.02),V(-3.14,.76,.02),.49,RGB.pump,32,.65);
+    m.torus(V(-3.90,.75,.02),.50,.10,'x',RGB.pumpDark,32,10,.7);
+    m.cylinder(V(-4.3,.76,.02),V(-3.86,.76,.02),.30,RGB.darkSteel,24,.75);
+    for(let x=-4.19;x<=-3.94;x+=.095)m.torus(V(x,.76,.02),.30,.022,'x',RGB.steel,18,8,.5);
+    m.cylinder(V(-3.4,.76,.02),V(-3.15,.76,.02),.29,RGB.lightSteel,22,.7);
+    m.box(-3.57,.23,.0,1.15,.22,.86,RGB.pumpDark,.55);
+    // upstream valve
+    m.cylinder(V(-2.84,1.04,0),V(-2.66,1.04,0),.29,RGB.darkSteel,24,.45);
+    m.cylinder(V(-2.75,1.18,0),V(-2.75,1.74,0),.075,RGB.darkSteel,16,.5);
+    m.torus(V(-2.75,1.76,0),.28,.04,'y',RGB.orange,28,10,.65);
+    for(let a=0;a<4;a++){const t=a*Math.PI/2;m.cylinder(V(-2.75,1.76,0),V(-2.75+.25*Math.cos(t),1.76,.25*Math.sin(t)),.028,RGB.orange,12,.3)}
+    // stainless CENAM-traceable master meter, mechanically in-line with flanges
+    m.cylinder(V(-1.90,1.04,0),V(-.36,1.04,0),.295,RGB.stainless,34,1.0);
+    m.cylinder(V(-1.68,1.04,0),V(-.60,1.04,0),.34,RGB.lightSteel,32,1.0);
+    for(let x of [-1.86,-.40]){m.cylinder(V(x-.055,1.04,0),V(x+.055,1.04,0),.39,RGB.darkSteel,28,.8);m.torus(V(x,1.04,0),.335,.05,'x',RGB.stainless,30,12,.9);for(let j=0;j<10;j++){const t=j*2*Math.PI/10; m.sphere(V(x,.04+1.04+.33*Math.sin(t),.33*Math.cos(t)),.045,RGB.darkSteel,6,8,.2)}}
+    // reference instrument electronics and stainless support
+    m.cylinder(V(-1.14,1.35,0),V(-1.14,1.74,0),.10,RGB.darkSteel,18,.7);
+    m.box(-1.14,1.97,0,.77,.47,.50,RGB.darkSteel,.6);m.box(-1.14,1.99,.26,.60,.31,.045,RGB.screen,.7);
+    m.box(-1.14,2.07,.290,.36,.025,.016,RGB.screenGlow,.5);
+    for(let x of [-1.34,-1.21,-1.08,-.95])m.box(x,1.9,.292,.065,.036,.018,RGB.green,.4);
+    // Badger electromagnetic meter with flanged blue tube and blue transmitter housing
+    m.cylinder(V(.70,1.04,0),V(2.13,1.04,0),.34,RGB.blue,38,.65);
+    m.cylinder(V(.83,1.04,0),V(1.96,1.04,0),.38,RGB.blueLight,32,.65);
+    m.box(1.36,1.38,0,.75,.15,.30,RGB.blueDark,.4);
+    for(let x of [.75,2.07]){m.cylinder(V(x-.07,1.04,0),V(x+.07,1.04,0),.44,RGB.blueDark,30,.65);m.torus(V(x,1.04,0),.38,.065,'x',RGB.lightSteel,30,10,.9);for(let j=0;j<8;j++){let t=j*Math.PI/4;m.sphere(V(x,1.04+.38*Math.sin(t),.38*Math.cos(t)),.045,RGB.stainless,6,8,.8)}}
+    m.cylinder(V(1.37,1.40,0),V(1.37,1.83,0),.105,RGB.blueDark,20,.6);
+    m.box(1.36,2.12,0,.83,.64,.46,RGB.blueDark,.6);m.box(1.36,2.14,.245,.67,.45,.025,RGB.blueLight,.7);m.box(1.36,2.17,.263,.48,.17,.023,RGB.screen,.8);
+    for(let x of [1.15,1.36,1.56])m.box(x,2.04,.27,.10,.05,.025,RGB.screenGlow,.4);
+    // terminal throttle valve, discharge flange and pressure tap
+    m.cylinder(V(2.94,1.04,0),V(3.30,1.04,0),.30,RGB.darkSteel,28,.6);m.torus(V(3.1,1.04,0),.35,.06,'x',RGB.lightSteel,30,10,.8);
+    m.cylinder(V(3.14,1.30,0),V(3.14,1.65,0),.085,RGB.darkSteel,15,.6);m.torus(V(3.14,1.69,0),.22,.05,'y',RGB.orange,28,10,.4);
+    // pressure gauge at discharge
+    m.cylinder(V(3.75,1.22,0),V(3.75,1.56,0),.042,RGB.steel,14,.7);m.cylinder(V(3.75,1.74,0),V(3.75,1.77,-.06),.21,RGB.darkSteel,28,.7);m.cylinder(V(3.75,1.74,.05),V(3.75,1.74,.083),.16,RGB.lightSteel,28,.6);
+    // cabinet for power and records
+    m.box(3.97,.74,-1.54,.72,1.23,.5,RGB.darkSteel,.35);m.box(3.97,.99,-1.27,.48,.19,.025,RGB.screen,.8);m.box(3.75,.65,-1.27,.06,.06,.025,RGB.screenGlow,.5);
+    // cable protection from meters to console
+    m.path([V(1.36,2.2,-.24),V(1.38,2.38,-.45),V(2.8,2.38,-1.32),V(3.8,1.20,-1.54)],.028,RGB.black,.1);
+    m.path([V(-1.14,2.15,-.25),V(-.85,2.35,-.5),V(2.68,2.30,-1.52),V(3.8,1.12,-1.54)],.022,RGB.darkSteel,.1);
+  }
+  drawScene();
+  function upload(mesh,usage=gl.STATIC_DRAW){const buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(mesh.arr),usage);return {buffer,count:mesh.arr.length/10}}
+  const scene=upload(staticMesh);
+  let particleBuffer=gl.createBuffer(),particleCount=0;
+  const stride=10*4;
+  function bind(mesh){gl.bindBuffer(gl.ARRAY_BUFFER,mesh.buffer);[[loc.position,3,0],[loc.normal,3,12],[loc.color,3,24],[loc.shine,1,36]].forEach(([l,n,o])=>{gl.enableVertexAttribArray(l);gl.vertexAttribPointer(l,n,gl.FLOAT,false,stride,o)})}
+  function matMul(a,b){const out=Array(16).fill(0);for(let i=0;i<4;i++)for(let j=0;j<4;j++)for(let k=0;k<4;k++)out[i+j*4]+=a[i+k*4]*b[k+j*4];return out}
+  function persp(fov,aspect,near,far){const f=1/Math.tan(fov/2);return [f/aspect,0,0,0,0,f,0,0,0,0,(far+near)/(near-far),-1,0,0,2*far*near/(near-far),0]}
+  function lookAt(eye,center,up){let z=norm(sub(eye,center)),x=norm(cross(up,z)),y=cross(z,x);return [x[0],y[0],z[0],0,x[1],y[1],z[1],0,x[2],y[2],z[2],0,-dot(x,eye),-dot(y,eye),-dot(z,eye),1]}
+  function pointTransform(mat,p){const x=p[0],y=p[1],z=p[2],w=mat[3]*x+mat[7]*y+mat[11]*z+mat[15];return [(mat[0]*x+mat[4]*y+mat[8]*z+mat[12])/w,(mat[1]*x+mat[5]*y+mat[9]*z+mat[13])/w,w]}
+  const anchor={tank:V(-4.35,3.25,-2.32),pump:V(-3.77,1.22,.30),master:V(-1.18,2.33,0),badger:V(1.40,2.51,0)};
+  const tags={tank:el('emc-tag-tank'),pump:el('emc-tag-pump'),master:el('emc-tag-master'),badger:el('emc-tag-badger')};
+  let lastTime=0,lastMatrix=null;const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function dynamics(t){animatedMesh=new Mesh();if(!run)return;const current=feed==='gravity'?Math.min(90,valve):valve;const speed=(current/120)*.35;
+    for(let i=0;i<14;i++){const x=-2.65+(((i/14*7.0+t*speed) %7.0+7.0)%7.0);const y=1.64;animatedMesh.cylinder(V(x,y,0),V(x+.12,y,0),.033,RGB.water,9,.6);animatedMesh.cylinder(V(x+.10,y,0),V(x+.19,y,0),.06,RGB.water,8,.6,0.002)}
+  }
+  function updateLabels(m){for(const k in tags){const e=tags[k];if(!e)continue;const p=pointTransform(m,anchor[k]);const x=(p[0]+1)*50,y=(1-p[1])*50;e.style.left=x.toFixed(2)+'%';e.style.top=y.toFixed(2)+'%';e.style.opacity=(p[2]>0 && x>7 && x<93 && y>5 && y<85)?'1':'0';}}
+  function frame(t){if(!lastTime)lastTime=t;const scale=Math.min(devicePixelRatio||1,2);const width=Math.max(1,Math.floor(canvas.clientWidth*scale)),height=Math.max(1,Math.floor(canvas.clientHeight*scale));if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;gl.viewport(0,0,width,height)}
+    const eye=[target[0]+zoom*Math.sin(yaw)*Math.cos(pitch),target[1]+zoom*Math.sin(pitch),target[2]+zoom*Math.cos(yaw)*Math.cos(pitch)];const camera=lookAt(eye,target,[0,1,0]);const p=persp((window.innerWidth<650?47:41)*Math.PI/180,width/height,.1,100),mat=matMul(p,camera);lastMatrix=mat;
+    gl.clearColor(0,0,0,0);gl.clearDepth(1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.enable(gl.DEPTH_TEST);gl.uniformMatrix4fv(loc.matrix,false,new Float32Array(mat));gl.uniform3fv(loc.camera,new Float32Array(eye));bind(scene);gl.drawArrays(gl.TRIANGLES,0,scene.count);
+    if(run){dynamics(t/1000);gl.bindBuffer(gl.ARRAY_BUFFER,particleBuffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(animatedMesh.arr),gl.DYNAMIC_DRAW);particleCount=animatedMesh.arr.length/10;bind({buffer:particleBuffer});gl.drawArrays(gl.TRIANGLES,0,particleCount)}
+    updateLabels(mat);lastTime=t;requestAnimationFrame(frame)
+  }
+  requestAnimationFrame(frame);
+  function rotateStart(e){drag=true;moved=false;pointerX=e.clientX;pointerY=e.clientY;canvas.setPointerCapture?.(e.pointerId)}
+  canvas.addEventListener('pointerdown',rotateStart);
+  canvas.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-pointerX,dy=e.clientY-pointerY;pointerX=e.clientX;pointerY=e.clientY;moved=true;yaw+=dx*.008;pitch=Math.max(.08,Math.min(1.06,pitch+dy*.005))});
+  canvas.addEventListener('pointerup',()=>{drag=false});canvas.addEventListener('pointercancel',()=>{drag=false});
+  canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(10,Math.min(25,zoom+Math.sign(e.deltaY)*1.1))},{passive:false});
+  el('emc-zoom-in')?.addEventListener('click',()=>{zoom=Math.max(10,zoom-1.6)});el('emc-zoom-out')?.addEventListener('click',()=>{zoom=Math.min(26,zoom+1.6)});el('emc-reset-view')?.addEventListener('click',()=>{yaw=-.48;pitch=.29;zoom=16.5});
+  function fmt(n){return n.toLocaleString('es-MX',{minimumFractionDigits:1,maximumFractionDigits:1})}
+  function refresh(){const q=run?(feed==='gravity'?Math.min(90,valve):valve):0;const indicated=q*(1+bias/100);const d=q?((indicated-q)/q*100):0;
+    el('emc-flow-rate-out').textContent=valve+' L/min';el('emc-flow-bias-out').textContent=(bias>=0?'+':'')+bias.toFixed(1)+' %';el('emc-flow-master-value').textContent=fmt(q);el('emc-flow-badger-value').textContent=fmt(indicated);el('emc-flow-deviation-value').textContent=(d>=0?'+':'')+d.toFixed(2)+' %';
+    el('emc-flow-status').textContent=run?(feed==='gravity'?'CAUDAL POR GRAVEDAD':'BOMBA EN CIRCULACIÓN'):'SISTEMA EN REPOSO';document.querySelector('.emc-flow-status-dot')?.classList.toggle('live',run);
+    el('emc-flow-power')?.classList.toggle('is-running',run);el('emc-flow-power')?.setAttribute('aria-pressed',String(run));el('emc-flow-power-label').textContent=run?'Detener circulación':'Iniciar circulación';el('emc-flow-power-icon').textContent=run?'■':'▶';
+    document.querySelectorAll('[data-flow-point]').forEach(b=>b.classList.toggle('is-active',Number(b.dataset.flowPoint)===valve));
+  }
+  inputRate?.addEventListener('input',e=>{valve=Number(e.target.value);refresh()});inputBias?.addEventListener('input',e=>{bias=Number(e.target.value);refresh()});
+  document.querySelectorAll('[data-flow-point]').forEach(b=>b.addEventListener('click',()=>{valve=Number(b.dataset.flowPoint);inputRate.value=valve;refresh()}));
+  document.querySelectorAll('[data-flow-mode]').forEach(b=>b.addEventListener('click',()=>{feed=b.dataset.flowMode;document.querySelectorAll('[data-flow-mode]').forEach(c=>{const yes=c===b;c.classList.toggle('is-active',yes);c.setAttribute('aria-pressed',String(yes))});refresh()}));
+  el('emc-flow-power')?.addEventListener('click',()=>{run=!run;refresh()});refresh();
+})();
+</script><script>
+(function(){
+  function sendHeight(){
+    var h=Math.ceil(Math.max(document.body.scrollHeight,document.documentElement.scrollHeight));
+    window.parent.postMessage({type:'emc-flowlab-resize',height:h},window.location.origin);
+  }
+  window.addEventListener('load',sendHeight);
+  if(window.ResizeObserver)new ResizeObserver(sendHeight).observe(document.body);
+  setTimeout(sendHeight,600);
+})();
+</script></body></html>
